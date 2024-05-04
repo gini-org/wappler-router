@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="">
+<head>
+  <script src="/dmxAppConnect/dmxAppConnect.js"></script>
+  <meta charset="UTF-8">
+  <title>AC2 Router lab</title>
+
+  <link rel="stylesheet" href="/style.css" />
+  <script src="/dmxAppConnect/dmxRouting/dmxRouting.js" defer></script>
+<script src="/dmxAppConnect/dmxFormatter/dmxFormatter.js" defer></script>
+</head>
+
+<body is="dmx-app" id="index">
+
+<dmx-value
+  id="flows" 
+  dmx-bind:value="[{&quot;flow/type&quot;: &quot;flow.type/x&quot;}]">
+</dmx-value>
+
+<nav id="main_menu">
+  <a href="/home" internal="true">Home</a>
+  <a href="/portfolio" internal="true">Portfolio</a>
+</nav>
+
+<div is="dmx-route" id="home_route" path="/home">
+  <h1>Home</h1>
+  <p>Home content</p>
+</div>
+
+<!-- <div is="dmx-route" id="portfolio_route" path="/portfolio"> -->
+<div is="dmx-route" path="/portfolio" url="_portfolio.html" exact="true" id="portfolio_route"></div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', _ => {
+    dmx.routing.router="hash"
+  })
+</script>
+</body></html>

@@ -1,0 +1,18 @@
+{
+  "projectName": "Router Lab",
+  "styleFile": "/style.css",
+  "assetsFolder": "/assets",
+  "frameworks": [
+    {
+      "name": "appConnect",
+      "type": "local"
+    }
+  ],
+  "runtime": "capacitor",
+  "projectType": "web",
+  "targets": [],
+  "extensions": [],
+  "activeTarget": "Local",
+  "projectLinksType": "site",
+  "webRootFolder": ""
+}
