@@ -12,7 +12,5 @@
   "projectType": "web",
   "targets": [],
   "extensions": [],
-  "activeTarget": "Local",
-  "projectLinksType": "site",
-  "webRootFolder": ""
+  "activeTarget": "Local"
 }
