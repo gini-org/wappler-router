@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="dmxAppConnect/dmxAppConnect.js"></script>
+  <meta charset="UTF-8">
+  <title>Router link test</title>
+
+  <script>dmx.routing = {router: 'hash'}</script>
+  <script src="dmxAppConnect/dmxRouting/dmxRouting.js" defer=""></script>
+  <style>
+      [is=dmx-route] {
+          margin: 1rem;
+          border: 1px solid gray;
+          padding: 0.2em;
+      }
+      .active { color: plum }
+  </style>
+</head>
+<body is="dmx-app" id="dmx-repeat-test">
+<h1><code>dmx-repeat</code> test</h1>
+
+<h2>Outside Route</h2>
+<p><code>img</code> with <code>dmx-bind:src</code>, expected image with text "bind src"</p>
+<img dmx-bind:src="https://placehold.co/100x50?text={{'bind+src'}}" alt="with bind src"/>
+
+<p><code>img</code> with <code>dmx-repeat</code> attribute, expected image with text "repeat attr {1,2,3}"</p>
+<img dmx-repeat="[1,2,3]"
+     dmx-bind:src="https://placehold.co/100x50?text=repeat+attr+{{$value}}"
+     dmx-bind:alt="repeat attr {{$value}}"/>
+
+<p><code>img</code> with <code>dmx-repeat</code> component, expected image with text "repeat comp {1,2,3}"</p>
+<div is="dmx-repeat" dmx-bind:repeat="[1,2,3]">
+  <img dmx-bind:src="https://placehold.co/100x50?text=repeat+comp+{{$value}}"
+       dmx-bind:alt="repeat comp {{$value}}"/>
+</div>
+
+<h2>Inside Route</h2>
+<div class="mb-2">
+  <a internal href="/route1/">Route 1</a>
+  <a internal href="/route2/">Route 2</a>
+</div>
+
+<div is="dmx-route" id="route1" path="/route1/">
+  <p><code>img</code> with <code>dmx-bind:src</code>, expected image with text "bind src"</p>
+  <img dmx-bind:src="https://placehold.co/100x50?text={{'bind+src'}}" alt="with bind src"/>
+
+  <p>
+    <code>img</code> with <code>dmx-repeat</code> attribute, expected image with text "repeat attr {1,2,3}".<br>
+    This one doesn't have {1,2,3} if the route is opened when the page is loaded.<br>
+    For example, enter this url in the url bar <code>http://localhost:2001/dmx-repeat.html#!/route1/</code>,<br>
+    or refresh this page when this route is active.<br>
+  </p>
+  <img dmx-repeat="[1,2,3]"
+       dmx-bind:src="https://placehold.co/100x50?text=repeat+attr+{{$value}}"
+       dmx-bind:alt="repeat attr {{$value}}"/>
+
+  <p><code>img</code> with <code>dmx-repeat</code> component, expected image with text "repeat comp {1,2,3}"</p>
+  <div is="dmx-repeat" dmx-bind:repeat="[1,2,3]">
+    <img dmx-bind:src="https://placehold.co/100x50?text=repeat+comp+{{$value}}"
+         dmx-bind:alt="repeat comp {{$value}}"/>
+  </div>
+</div>
+
+<div is="dmx-route" id="route2" path="/route2/">
+  <div>This is route 2</div>
+  <img dmx-bind:src="{{'https://placehold.co/100x50?text=Route+2'}}" alt="route 2"/>
+</div>
+
+</body>
+</html>

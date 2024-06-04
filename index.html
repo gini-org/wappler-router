@@ -6,6 +6,7 @@
   <title>AC2 Router lab</title>
 
   <link rel="stylesheet" href="style.css"/>
+  <script>dmx.routing.router="hash"</script>
   <script src="dmxAppConnect/dmxRouting/dmxRouting.js" defer></script>
   <script src="dmxAppConnect/dmxFormatter/dmxFormatter.js" defer></script>
 </head>
@@ -18,8 +19,8 @@
 </dmx-value>
 
 <nav id="main_menu">
-  <a href="/home" internal="true">Home</a>
-  <a href="/portfolio" internal="true">Portfolio</a>
+  <a href="/home" internal>Home</a>
+  <a href="/portfolio" internal>Portfolio</a>
 </nav>
 
 <div is="dmx-route" id="home_route" path="/home">
@@ -30,9 +31,4 @@
 <!-- <div is="dmx-route" id="portfolio_route" path="/portfolio"> -->
 <div is="dmx-route" path="/portfolio" url="_portfolio.html" exact="true" id="portfolio_route"></div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', _ => {
-    dmx.routing.router="hash"
-  })
-</script>
 </body></html>

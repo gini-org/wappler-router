@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="dmxAppConnect/dmxAppConnect.js"></script>
+  <meta charset="UTF-8">
+  <title>Router link test</title>
+
+  <script>dmx.routing = {router: 'hash'}</script>
+  <script src="dmxAppConnect/dmxRouting/dmxRouting.js" defer=""></script>
+  <style>
+      [is=dmx-route] {
+          margin: 1rem;
+          border: 1px solid gray;
+          padding: 0.2em;
+      }
+      .active { color: plum }
+  </style>
+</head>
+<body is="dmx-app" id="link-test">
+
+<h1>Router dmx-link active state</h1>
+<p>link with <code>nav-link</code> class, expect to have <code>active</code> class added.</p>
+<a href="/route1" internal class="nav-link">Link to '/route1'</a><br>
+<a href="/route2" internal class="nav-link">Link to '/route2'</a>
+
+<p>link with <code>dmx-class:active="route1.isMatch"</code></p>
+<a href="/route1" internal dmx-class:active="route1.isMatch">Link to '/route1'</a><br>
+<a href="/route2" internal dmx-class:active="route2.isMatch">Link to '/route2'</a>
+
+<br>
+
+<div is="dmx-route" id="route1" path="/route1">
+  Route: /route1<br>
+  Trying links that will be removed/added on route change.<br>
+  <a href="/route2" internal class="nav-link">Link to '/route2'</a>
+</div>
+
+<div is="dmx-route" id="route2" path="/route2">
+  Route: /route2<br>
+  Trying links that will be removed/added on route change.<br>
+  <a href="/route1" internal class="nav-link">Link to '/route1'</a>
+</div>
+</body>
+</html>
